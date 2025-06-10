@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Cake</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #fff8f0;
+      font-family: 'Comic Sans MS', cursive;
+      padding-top: 50px;
+    }
+
+    .cake {
+      display: inline-block;
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .layer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #d2691e; /* brown */
+      border-radius: 10px;
+    }
+
+    .icing {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      height: 30px;
+      background-color: #ff69b4; /* pink */
+      border-radius: 15px 15px 0 0;
+    }
+
+    .bite {
+      position: absolute;
+      right: -40px;
+      top: 30px;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      clip-path: circle(20px at center);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 2em;
+      color: #ff4081;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .show-message {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Click the Cake!</h1>
+
+  <div class="cake" onclick="takeBite()">
+    <div class="layer"></div>
+    <div class="icing"></div>
+    <div id="bite" class="bite"></div>
+  </div>
+
+  <div id="birthdayMessage" class="message">🎂 Happy Birthday! 🎉</div>
+
+  <script>
+    function takeBite() {
+      const bite = document.getElementById('bite');
+      const message = document.getElementById('birthdayMessage');
+
+      // Animate bite
+      bite.style.backgroundColor = '#fff8f0';
+      bite.style.clipPath = 'circle(30px at center)';
+      bite.style.transform = 'scale(1.2)';
+      setTimeout(() => {
+        bite.style.transform = 'scale(1)';
+      }, 150);
+
+      // Show message
+      message.classList.add('show-message');
+    }
+  </script>
+
+</body>
+</html>
